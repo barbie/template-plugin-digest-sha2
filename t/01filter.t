@@ -3,7 +3,7 @@ use strict;
 
 use Template::Test;
 
-$Template::Test::DEBUG = 2;
+$Template::Test::DEBUG = 0;
 
 test_expect(\*DATA);
 
@@ -31,7 +31,7 @@ ca9d59c8f9aa865c799bcd30afa6c2643c18bc5545b2dd6d9143a4a50b5cb42a
 [% text = 'xyzzy'; text.sha2_hex %]
 --expect--
 184858a00fd7971f810848266ebcecee5e8b69972c5ffaed622f5ee078671aed
-2e2b2f9d6df6f4c2a9d6e93c0dda5286524b9f0af7a601df7508487f0bb5ac83
+184858a00fd7971f810848266ebcecee5e8b69972c5ffaed622f5ee078671aed
 
 # FILTER sha2_base64; ...
 --test--
@@ -75,7 +75,7 @@ Donec pharetra, nibh nec mollis tristique, lorem turpis viverra elit, in sollici
     checksum.sha2_hex;
  -%]
 --expect--
-c1e771b774b8ce4d4e0262b28de54773d34bd1b34d62cec99f634ff02e4127b5
+fae6e96e8e5d7810d8f298ba8867a067de2ff58767feb3f0d953b7e86ffd9e3b
 
 
 # Test the sha2 filter and vmethod
@@ -85,9 +85,9 @@ c1e771b774b8ce4d4e0262b28de54773d34bd1b34d62cec99f634ff02e4127b5
 [% text1 = 'xyzzy'; text1.sha2 | sha2_hex %]
 [% text2 = 'xyzzy'; text2.sha2.sha2_hex %]
 --expect--
-788ffce9e1e0630e4a96769ee166c724d208e0e735a0ffa0af1614b003b9b66f
-e0e1603df671ac997458b19bffaf38ab09d309ec29523c1bb7549f90ba00b242
-ef5c3e6884a11877e78668079cdaacb1dced0bdd138ccc07dd48544de9de646e
+35e017ffbad99f60b074c09793812c3c8d405b38e04a5aa4d73ae912b502a7f3
+35e017ffbad99f60b074c09793812c3c8d405b38e04a5aa4d73ae912b502a7f3
+35e017ffbad99f60b074c09793812c3c8d405b38e04a5aa4d73ae912b502a7f3
 
 --test--
 [% USE Digest.SHA2(512) -%]
