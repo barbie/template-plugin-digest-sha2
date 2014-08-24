@@ -86,26 +86,18 @@ into the current context:
 
 =item C<sha2>
 
-Calculate the SHA-1 digest of the input, and return it in binary form.
-The returned string will be 20 bytes long.
+Calculate the SHA-2 digest of the input, and return it in binary form.
 
 =item C<sha2_hex>
 
-Same as C<sha2>, but will return the digest in hexadecimal form. The
-length of the returned string will be 40 and it will only contain
-characters from this set: '0'..'9' and 'a'..'f'.
+Same as C<sha2>, but will return the digest in hexadecimal form. The returned
+string will only contain characters from this set: '0'..'9' and 'a'..'f'.
 
 =item C<sha2_base64>
 
-Same as C<sha2>, but will return the digest as a base64 encoded
-string.  The length of the returned string will be 27 and it will
-only contain characters from this set: 'A'..'Z', 'a'..'z',
+Same as C<sha2>, but will return the digest as a base64 encoded string. The
+returned string will only contain characters from this set: 'A'..'Z', 'a'..'z',
 '0'..'9', '+' and '/'.
-
-Note that the base64 encoded string returned is not padded to be a
-multiple of 4 bytes long.  If you want interoperability with other
-base64 encoded sha2 digests you might want to append the redundant
-string "=" to the result.
 
 =back
 
@@ -116,9 +108,18 @@ equivalent:
     content FILTER sha2_hex;
     content.sha2_base64;
 
+=head2 Bit length
+
+By default the checksum is produced with a 256 bit length string. The 
+supported bit lengths are 256, 384 and 512, which are set as follows:
+
+    [% USE Digest.SHA2(256) %]
+    [% USE Digest.SHA2(384) %]
+    [% USE Digest.SHA2(512) %]
+
 =head1 SEE ALSO
 
-L<Digest::MD5>, L<Template>
+L<Digest::SHA2>, L<Template>
 
 =head1 AUTHOR
 
