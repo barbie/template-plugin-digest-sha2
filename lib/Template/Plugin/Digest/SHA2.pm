@@ -31,22 +31,19 @@ sub new {
 }
 
 sub _sha2 {
-    my $options = ref $_[-1] eq 'HASH' ? pop : {};
-    $sha2 ||= new Digest::SHA2;
+    $sha2->reset();
     $sha2->add(join('', @_));
     return $sha2->digest();
 }
 
 sub _sha2_hex {
-    my $options = ref $_[-1] eq 'HASH' ? pop : {};
-    $sha2 ||= new Digest::SHA2;
+    $sha2->reset();
     $sha2->add(join('', @_));
     return $sha2->hexdigest();
 }
 
 sub _sha2_base64 {
-    my $options = ref $_[-1] eq 'HASH' ? pop : {};
-    $sha2 ||= new Digest::SHA2;
+    $sha2->reset();
     $sha2->add(join('', @_));
     return $sha2->b64digest();
 }
