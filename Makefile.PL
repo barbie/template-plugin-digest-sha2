@@ -15,10 +15,10 @@ WriteMakefile(
     PREREQ_PM => {
 
         # prereqs
+        'Digest::SHA2'                      => '0',
         'Template'                          => '2.0',
         'Template::Plugin'                  => '2.0',
         'Template::Stash'                   => '2.0',
-        'Digest::SHA2'                      => '0',
 
         # for testing
         'IO::File'                          => 0,
